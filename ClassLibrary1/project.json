@@ -1,0 +1,11 @@
+﻿{
+  "runtimes": { "win": {} },
+  "dependencies": {
+    "xunit": "2.2.0",
+    "xunit.runner.visualstudio": "2.2.0",
+    "Microsoft.Owin.Testing": "3.1.0",
+    "Microsoft.Owin.StaticFiles": "3.1.0"
+  },
+  "frameworks": { "net462": {} }
+
+}

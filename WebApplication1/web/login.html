@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+  <title>login</title>
+  <script src="jquery-2.2.4.js" type="text/javascript"></script>
+</head>
+
+<body>
+  <input type="button" value="login" id="login" />
+  <script type="text/javascript">
+    window.sessionStorage.clear();
+
+    console.log('session storage cleared');
+
+    document.getElementById('login').addEventListener('click', function () {
+      $.ajax('/login', { method: 'POST' }).then(function (data, testStatus, jqXHR) {
+        if (jqXHR.status == "204") {
+          var locationValue = jqXHR.getResponseHeader("X-Location");
+          if (locationValue) {
+            location.href = locationValue
+
+          }
+        }
+      })
+    })
+
+  </script>
+</body>
+</html>

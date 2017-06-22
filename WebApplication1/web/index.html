@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>index</title>
+  <script src="jquery-2.2.4.js" type="text/javascript"></script>
+  <script src="api.js" type="text/javascript"></script>
+  <script src="SmartLogout.js" type="text/javascript"></script>
+  <script type="text/javascript">
+    //alert(1);
+    //smartLogout(window.addEventListener, new UnloadTimeStorage(window.localStorage), api.logout, { timeout: 2000 })
+
+    var interval = window.setInterval(api.explicitExtendCookie, 1000)
+
+    window.setTimeout(function () { window.clearInterval(interval); console.log('timeout elapsed') }, 10000)
+
+    document.addEventListener('keydown', keydown, false)
+
+    function keydown(e) {
+      e = e || window.event
+
+    }
+  </script>
+
+</head>
+<body>
+  hello
+  <button id="b1">ajax explicite extend</button>
+  <button id="b2">ajax extending cookie</button>
+  <button id="b3">ajax not extending cookie</button>
+  <button id="b4">logout</button>
+  <script type="text/javascript">
+
+    function attachClick(id, handler) {
+      document.getElementById(id).addEventListener("click", handler, false);
+    }
+    attachClick('b1', api.explicitExtendCookie);
+    attachClick('b2', api.ajaxExtendCookie);
+    attachClick('b3', api.ajaxNotExtendCookie);
+    attachClick('b4', api.logout);
+
+  </script>
+
+</body>
+</html>
